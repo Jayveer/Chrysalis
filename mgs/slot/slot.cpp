@@ -135,10 +135,7 @@ void Slot::extract(std::string keyFile, uint16_t pageID, std::string output) {
 /* CNF */
 
 uint64_t Slot::getNextSectorOffset(uint64_t currentOffset) {
-	uint64_t step = (sector - (currentOffset % sector));
-	if (step != sector)
-		return step;
-	return currentOffset;
+	return getAlignment(currentOffset, sector);
 }
 
 uint32_t Slot::getSectorSize() {

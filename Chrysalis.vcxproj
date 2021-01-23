@@ -157,6 +157,8 @@
     <ClCompile Include="mgs\common\decryptor\decryptor.cpp" />
     <ClCompile Include="interface\cli\cli.cpp" />
     <ClCompile Include="mgs\common\game\game.cpp" />
+    <ClCompile Include="mgs\dar\dar.cpp" />
+    <ClCompile Include="mgs\qar\qar.cpp" />
     <ClCompile Include="mgs\slot\slot.cpp" />
     <ClCompile Include="mgs\slot\stage\stages.cpp" />
     <ClCompile Include="mgs\slot\stage\stage.cpp" />
@@ -173,6 +175,8 @@
     <ClInclude Include="mgs\common\strcode.h" />
     <ClInclude Include="mgs\common\util.h" />
     <ClInclude Include="interface\cli\cli.h" />
+    <ClInclude Include="mgs\dar\dar.h" />
+    <ClInclude Include="mgs\qar\qar.h" />
     <ClInclude Include="mgs\slot\slot.h" />
     <ClInclude Include="mgs\slot\stage\stage.h" />
   </ItemGroup>

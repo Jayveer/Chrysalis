@@ -42,6 +42,12 @@
     <ClCompile Include="mgs\common\game\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mgs\dar\dar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mgs\qar\qar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mgs\common\decryptor\decryptor.h">
@@ -81,6 +87,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mgs\common\game\game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mgs\dar\dar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mgs\qar\qar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

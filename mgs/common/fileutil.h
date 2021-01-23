@@ -1,4 +1,5 @@
 #pragma once
+#include <fstream>
 #include <filesystem>
 
 inline
@@ -21,6 +22,12 @@ std::string getCurrentDir(std::string& output) {
 }
 
 inline
+std::string getExtension(std::string& output) {
+	std::filesystem::path p{ output };
+	return p.extension().u8string();
+}
+
+inline
 bool isDirectory(std::string& output) {
 	std::filesystem::path p{ output };
 	return std::filesystem::is_directory(p);
@@ -30,4 +37,24 @@ inline
 bool fileExists(std::string& output) {
 	std::filesystem::path p{ output };
 	return std::filesystem::exists(p);
+}
+
+inline
+int64_t getAlignment(int64_t currentOffset, int64_t alignSize) {
+	uint64_t step = (alignSize - (currentOffset % alignSize));
+	if (step != alignSize)
+		return step;
+	return 0;
+}
+
+inline
+void writeDataToFile(uint8_t* data, int size, const std::string& filename, std::string& output) {
+	if (!std::filesystem::exists(output))
+		std::filesystem::create_directories(output);
+
+	updateDir(filename, output);
+	std::ofstream ofs(output, std::ofstream::binary);
+	ofs.write((char*)data, size);
+	ofs.close();
+	resetDir(output);
 }

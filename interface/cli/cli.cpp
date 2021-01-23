@@ -51,6 +51,39 @@ void CLI::processSlot() {
 	pageID == -1 ? slot.extractAll(input, output) : slot.extract(input, pageID, output);
 }
 
+void CLI::processDar() {
+	std::string input = argv[currentArg];
+	std::string output = "";
+	currentArg++;
+
+	if (currentArg == argc - 1) output = argv[currentArg];
+
+	if (!verifyFile(input)) return;
+
+	Dar dar = Dar(input);
+	dar.open();
+
+	printf("Extracting Dar...");
+	dar.extract(output);
+}
+
+void CLI::processQar() {
+	std::string input = argv[currentArg];
+	std::string stageName = "";
+	std::string output = "";
+	currentArg++;
+
+	if (currentArg == argc - 1) output = argv[currentArg];
+
+	if (!verifyFile(input)) return;
+
+	Qar qar = Qar(input);
+	qar.open();
+
+	printf("Extracting Qar...");
+	qar.extract(output);
+}
+
 void CLI::processStage() {
 	std::string input = argv[currentArg];
 	std::string stageName = "";
@@ -86,11 +119,17 @@ bool CLI::verifyFile(std::string& file) {
 
 void CLI::processFile() {
 	std::string filepath = argv[currentArg];
-	if (getCurrentDir(filepath) == "SLOT.DAT") processSlot();
-	if (getCurrentDir(filepath) == "STAGEDAT.PDT") processStage();
+	if (getCurrentDir(filepath) == "SLOT.DAT")		{ processSlot();  return; }
+	if (getCurrentDir(filepath) == "STAGEDAT.PDT")	{ processStage(); return; }
+	if (getCurrentDir(filepath) == "stagedata.pdt") { processStage(); return; }
+	if (getExtension(filepath)  == ".dar")			{ processDar();   return; }
+	if (getExtension(filepath)  == ".qar")			{ processQar();   return; }
+
+	printf("sorry the file %s is not currently supported", filepath.c_str());
 }
 
 void CLI::setCommand(char* arg) {
+
 	if (!strcmp(arg, "-extract") || !strcmp(arg, "-e")) {
 		command = EXTRACT;
 		return;
@@ -106,7 +145,7 @@ void CLI::setCommand(char* arg) {
 		return;
 	}
 
-	printf("command not recogized");
+	printf("command not recognised");
 }
 
 void CLI::run(std::string programName, std::string version) {

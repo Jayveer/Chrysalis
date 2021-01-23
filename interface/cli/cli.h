@@ -1,6 +1,8 @@
 #pragma once
 #include <filesystem>
 
+#include "../../mgs/qar/qar.h"
+#include "../../mgs/dar/dar.h";
 #include "../../mgs/slot/stage/stage.h";
 
 typedef enum CLI_COMMAND {
@@ -21,9 +23,11 @@ private:
 	int currentArg = 1;
 	CLI_COMMAND command = EXTRACT;
 
-	void printUsage();
+	void printUsage(); 
 	bool checkInput();
 	void processArgs();
+	void processQar();
+	void processDar();
 	void processFile();
 	void processSlot();
 	void processStage();
@@ -37,6 +41,8 @@ private:
 	const char* EXIT_MESSAGE = "Exiting\n";
 	const char* USAGE_MESSAGE = "Usage:\t Chrysalis.exe <options> SLOT.DAT  [PAGEID] [OUTPUTDIRECTORY] \n"
 									  "\t Chrysalis.exe <options> STAGEDAT.PDT  [STAGENAME] [OUTPUTDIRECTORY] \n"
+									  "\t Chrysalis.exe <options> cache.dar [OUTPUTDIRECTORY] \n"
+									  "\t Chrysalis.exe <options> cache.qar [OUTPUTDIRECTORY] \n"
 									  "\t options: -PSP/-psp to extract PSP game files (default value) \n"
 									  "\t\t  -PS3/-ps3 to extract PS3 game files \n"
 									  "\t\t  -extract/-e to extract (default value) redundant for now \n\n"
@@ -44,5 +50,4 @@ private:
 		"If PAGEID or STAGENAME aren't provided all files will be extracted\n"
 		"IF OUTPUTDIRECTORY is not provided files will be extracted to wherever the tool is run from\n"
 		"SLOT.KEY is required to be in the same directory as SLOT.DAT\n";
-
 };

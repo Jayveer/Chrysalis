@@ -6,8 +6,11 @@ Chrysalis is a free open source tool designed to be used with the game Metal Gea
 
 This project uses [Zlib](https://github.com/madler/zlib) by [Mark Adler](https://github.com/madler)
 
+
+### Latest Changes
+ - Added support to extrtact dar and qar archives
+
 ### To Do
- - Add Support for some of the simpler archive formats
  - Find out how slot lookup is hashed
  - Add multithreaded extract
  - Create GUI variant
@@ -15,7 +18,7 @@ This project uses [Zlib](https://github.com/madler/zlib) by [Mark Adler](https:/
 
 ##  Usage
 
-Currently only a CLI version of the application exists. The filename of the file to extract is mandatory whilst all other inputs are optional and will revert to defaults if not set. If extracting from the PSP version of the game it is possible to simply drag the file on the executable to extract it, this will extract all files. It is possible to extract a specfic page but it's numbered index when extracting slot files, as well as extracting a specific stage by providing its name when extracting stage files.
+Currently only a CLI version of the application exists. The filename of the file to extract is mandatory whilst all other inputs are optional and will revert to defaults if not set. If extracting from the PSP version of the game it is possible to simply drag the file on the executable to extract it, this will extract all files. It is possible to extract a specfic page using its numbered index when extracting slot files, as well as extracting a specific stage by providing its name when extracting stage files.
 
 If extracting SLOT.DAT it is required to have SLOT.KEY alongside it in the same directory.
 
@@ -54,6 +57,15 @@ Chrysalis.exe -ps3 "path\to\STAGEDAT.PDT" "init" "path\to\output"
 ```
 Adding an output path at the end will extract the files to a specified folder of your choice.
 
+```
+Chrysalis.exe "path\to\cache.dar" "path\to\output"
+```
+It's also possible to extract from dar and qar archives. The Platform option is unnecessary here.
+
+```
+Chrysalis.exe "path\to\cache.qar" "path\to\output"
+```
+Extracting from Qar.
 
 ## License
 [MIT](LICENSE.md)

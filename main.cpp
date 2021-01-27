@@ -2,5 +2,5 @@
 
 int main(int argc, char** argv) {
 	CLI cli = CLI(argc, argv);
-	cli.run("Chrysalis", "1.0");
+	cli.run("Chrysalis", "1.2");
 }

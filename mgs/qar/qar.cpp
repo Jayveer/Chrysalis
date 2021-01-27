@@ -33,6 +33,9 @@ void Qar::open() {
 		int size = header.dataInfo[i].fileSize;
 		txpFiles[i].resize(size);
 		qarDat.read((char*)&txpFiles[i][0], size);
+
+		int align = getAlignment(qarDat.tellg(), 0x80);
+		qarDat.seekg(align, qarDat.cur);
 	}
 
 	qarDat.close();

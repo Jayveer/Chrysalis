@@ -60,12 +60,17 @@ Adding an output path at the end will extract the files to a specified folder of
 ```
 Chrysalis.exe "path\to\cache.dar" "path\to\output"
 ```
-It's also possible to extract from dar and qar archives. The Platform option is unnecessary here.
+It's also possible to extract from dar and qar archives. The Platform option is unnecessary for Dar.
 
 ```
 Chrysalis.exe "path\to\cache.qar" "path\to\output"
 ```
 Extracting from Qar.
+
+```
+Chrysalis.exe -ps3 "path\to\cache.qar" "path\to\output"
+```
+If extracting from the ps3 game it is required to use the option for Qar files, as it uses a different alignment value.
 
 ## License
 [MIT](LICENSE.md)

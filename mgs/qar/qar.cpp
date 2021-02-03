@@ -34,7 +34,9 @@ void Qar::open() {
 		txpFiles[i].resize(size);
 		qarDat.read((char*)&txpFiles[i][0], size);
 
-		int align = getAlignment(qarDat.tellg(), 0x80);
+		int sector = PLATFORM == PS3 ? 0x1000 : 0x80;
+
+		int align = getAlignment(qarDat.tellg(), sector);
 		qarDat.seekg(align, qarDat.cur);
 	}
 

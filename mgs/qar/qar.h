@@ -2,6 +2,7 @@
 #include <string>
 
 #include "../common/fileutil.h"
+#include "../common/game/game.h"
 
 struct QarDataInfo {
 	uint32_t fileInfo;
